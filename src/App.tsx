@@ -4,39 +4,8 @@ import {
   FaSun,
   FaMoon
 } from 'react-icons/fa';
-import TreeComponent, { TreeNode } from './TreeComponent';
-import Tree from './New/Other';
-import { useDrag, useDrop, DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import { FooterLink } from './FooterLink';
 
-export const initialTree: TreeNode = {
-  id: 1,
-  name: 'Root',
-  children: [
-    {
-      id: 2,
-      name: 'Node 1',
-      children: [
-        {
-          id: 3,
-          name: 'Node 1.1',
-          children: [],
-        },
-        {
-          id: 4,
-          name: 'Node 1.2',
-          children: [],
-        },
-      ],
-    },
-    {
-      id: 5,
-      name: 'Node 2',
-      children: [],
-    },
-  ],
-};
 
 
 const App: React.FC = () => {
