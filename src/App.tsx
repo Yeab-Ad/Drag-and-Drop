@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import DraggableDiv from './DraggableComponent';
-import { FaGlobe, FaGithub } from 'react-icons/fa';
+import {
+  FaSun,
+  FaMoon
+} from 'react-icons/fa';
 import TreeComponent, { TreeNode } from './TreeComponent';
 import Tree from './New/Other';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
@@ -40,6 +43,7 @@ const App: React.FC = () => {
   const [nodes, setNodes] = useState<{ id: number; name: string }[]>([]);
   const [nextNodeId, setNextNodeId] = useState(0);
   const [showHints, setShowHints] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleNodeCreate = () => {
     const newNode = { id: nextNodeId, name: 'New Node' };
@@ -56,15 +60,24 @@ const App: React.FC = () => {
   const handleHintsToggle = () => {
     setShowHints((prevState) => !prevState);
   };
+
+  const handleModeToggle = () => {
+    setIsDarkMode((prevState) => !prevState);
+  };
+
   return (
-    <div style={{ minHeight: "200vh", position: 'relative' }}>
+    <div style={{
+      minHeight: "200vh", position: 'relative',
+      background: isDarkMode ? '#222' : '#fff',
+      color: isDarkMode ? '#fff' : '#000',
+    }}>
       <header
         style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           padding: '20px',
-          background: '#000',
+          background: isDarkMode ? '#000' : '#000',
           color: '#fff',
         }}
       >
@@ -74,6 +87,25 @@ const App: React.FC = () => {
         <p style={{ fontSize: '18px', margin: '10px 0', fontWeight: 'bold', maxWidth: '400px', textAlign: 'center' }}>
           An awesome app for organizing and managing draggable nodes!
         </p>
+
+        <p style={{
+          position: 'absolute',
+          top: '5px',
+          right: '18px',
+          fontSize: '12px',
+          fontFamily: 'monospace',
+          letterSpacing: '-0.5px',
+        }}>Version 1.10</p>
+
+        <p style={{
+          position: 'absolute',
+          top: '5px',
+          left: '18px',
+          fontSize: '12px',
+          fontFamily: 'monospace',
+          letterSpacing: '-0.5px',
+        }}>By Yeab Ad</p>
+
       </header>
 
 
@@ -82,7 +114,8 @@ const App: React.FC = () => {
           onClick={handleHintsToggle}
           style={{
             padding: '10px 20px',
-            background: '#007AFF',
+            // background: '#007AFF',
+            background: isDarkMode ? '#007AFF' : '#222',
             color: '#fff',
             border: 'none',
             borderRadius: '20px',
@@ -101,8 +134,9 @@ const App: React.FC = () => {
           onClick={() => setNodes([])}
           style={{
             padding: '10px 20px',
-            background: '#eee',
-            color: '#000',
+            // background: '#eee',
+            background: isDarkMode ? '#666' : '#eee',
+            color: isDarkMode ? "#fff" : '#000',
             border: 'none',
             borderRadius: '20px',
             cursor: 'pointer',
@@ -116,7 +150,8 @@ const App: React.FC = () => {
           onClick={handleNodeCreate}
           style={{
             padding: '10px 20px',
-            background: '#000',
+            // background: '#000',
+            background: isDarkMode ? '#007AFF' : '#000',
             color: '#fff',
             border: 'none',
             borderRadius: '20px',
@@ -144,13 +179,15 @@ const App: React.FC = () => {
               position: 'fixed',
               bottom: '20px',
               right: '20px',
-              backgroundColor: '#f3f3f3',
+              // backgroundColor: '#f3f3f3',
+              backgroundColor: isDarkMode ? '#363636' : '#f3f3f3',
               padding: '10px',
               borderRadius: '5px',
               boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+              color: isDarkMode ? '#fff' : '#666',
             }}
           >
-            <p style={{ color: '#666' }}>To create a new node:</p>
+            <p style={{ color: isDarkMode ? '#fff' : '#666' }}>To create a new node:</p>
             <ul style={{ listStyleType: 'none', padding: '0' }}>
               <li>Click the "Create Node" button</li>
               <li>A new draggable node will appear on the screen</li>
@@ -174,8 +211,50 @@ const App: React.FC = () => {
         }}
       >
 
-        <FooterLink link="https://www.example.com" type='website' name="Website" />
+
+        <FooterLink link="https://www.example.com" type='website' name="Yeab-Ad" />
         <FooterLink link="https://github.com/example" type='git' name="GitHub ❤" />
+        <label
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            cursor: 'pointer',
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={isDarkMode}
+            onChange={handleModeToggle}
+            style={{ display: 'none' }}
+          />
+          <div
+            style={{
+              width: '40px',
+              height: '24px',
+              background: isDarkMode ? '#888' : '#ddd',
+              borderRadius: '12px',
+              position: 'relative',
+              transition: 'background-color 0.3s ease',
+            }}
+          >
+            <div
+              style={{
+                width: '20px',
+                height: '20px',
+                background: '#fff',
+                borderRadius: '50%',
+                position: 'absolute',
+                top: '2px',
+                left: isDarkMode ? '-7%' : '2px',
+                transform: isDarkMode ? 'translateX(100%)' : 'translateX(0)',
+                transition: 'transform 0.3s ease',
+              }}
+            ></div>
+          </div>
+          <div style={{ marginLeft: '5px' }}>
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </div>
+        </label>
       </div>
 
     </div>
