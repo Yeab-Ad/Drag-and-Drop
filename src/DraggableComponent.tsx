@@ -4,9 +4,15 @@ interface DraggableDivProps {
     id: number;
     name: string;
     onNodeSave: (id: number, name: string) => void;
+    onNodeDelete: (id: number) => void;
 }
 
-const DraggableDiv: React.FC<DraggableDivProps> = ({ id, name, onNodeSave }) => {
+const DraggableDiv: React.FC<DraggableDivProps> = ({
+    id,
+    name,
+    onNodeSave,
+    onNodeDelete,
+}) => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartPos, setDragStartPos] = useState({ x: 0, y: 0 });
@@ -48,6 +54,10 @@ const DraggableDiv: React.FC<DraggableDivProps> = ({ id, name, onNodeSave }) => 
         onNodeSave(id, newName);
     };
 
+    const handleDeleteClick = () => {
+        onNodeDelete(id);
+    };
+
     return (
         <div
             style={{
@@ -57,7 +67,7 @@ const DraggableDiv: React.FC<DraggableDivProps> = ({ id, name, onNodeSave }) => 
                 cursor: isDragging ? 'grabbing' : 'grab',
                 userSelect: 'none',
                 transition: 'box-shadow 0.3s ease',
-                touchAction: 'none', // Add this line
+                touchAction: 'none',
             }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -73,6 +83,10 @@ const DraggableDiv: React.FC<DraggableDivProps> = ({ id, name, onNodeSave }) => 
                         ? '0 2px 10px rgba(0, 0, 0, 0.3)'
                         : '0 2px 5px rgba(0, 0, 0, 0.3)',
                     position: 'relative',
+                    minWidth: '100px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                 }}
             >
                 {isEditing ? (
@@ -105,7 +119,26 @@ const DraggableDiv: React.FC<DraggableDivProps> = ({ id, name, onNodeSave }) => 
                         </button>
                     </>
                 ) : (
-                    <div onDoubleClick={handleDoubleClick}>{newName}</div>
+                    <>
+                        <div onDoubleClick={handleDoubleClick}>{newName}</div>
+                        <button
+                            onClick={handleDeleteClick}
+                            style={{
+                                position: 'absolute',
+                                top: '-10px',
+                                right: '-10px',
+                                background: '#ff3b30',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: '50%',
+                                width: '20px',
+                                height: '20px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            X
+                        </button>
+                    </>
                 )}
             </div>
         </div>
