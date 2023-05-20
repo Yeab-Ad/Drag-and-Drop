@@ -120,7 +120,7 @@ const DraggableDiv: React.FC<DraggableDivProps> = ({
                     </>
                 ) : (
                     <>
-                        <div onDoubleClick={handleDoubleClick}>{newName}</div>
+                        <div style={{ color: '#000' }} onDoubleClick={handleDoubleClick}>{newName}</div>
                         <button
                             onClick={handleDeleteClick}
                             style={{
