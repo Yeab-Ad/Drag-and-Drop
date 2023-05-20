@@ -181,7 +181,7 @@ const App: React.FC = () => {
       >
 
 
-        <FooterLink link="https://u-node.netlify.app" type='website' name="Yeab-Ad" />
+        <FooterLink link="https://yeabsiras.netlify.app" type='website' name="Yeab-Ad" />
         <FooterLink link="https://github.com/Yeab-Ad" type='git' name="GitHub ❤" />
         <label
           style={{
