@@ -98,7 +98,7 @@ const DraggableDiv: React.FC<DraggableDivProps> = ({
                             autoFocus
                             style={{
                                 width: '100%',
-                                marginBottom: '10px',
+                                marginRight: '10px',
                                 padding: '5px',
                                 border: '1px solid #ccc',
                                 borderRadius: '3px',
