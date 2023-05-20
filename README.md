@@ -4,8 +4,14 @@ Node Effect✌ is an awesome app for organizing and managing draggable nodes!
 
 <center>
   <div>
-    <p>Dark Mode</p>
-    <img src="src/assets/img1.png" alt="Image"  />
+    <h2>Light Mode</h2>
+    <img src="src/assets/img2.png" alt="Image" />
+  </div>
+</center>
+<center>
+  <div>
+    <h2>Dark Mode</h2>
+    <img src="src/assets/img1.png" alt="Image" />
   </div>
 </center>
 
