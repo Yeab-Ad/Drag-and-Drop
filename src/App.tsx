@@ -64,7 +64,7 @@ const App: React.FC = () => {
           fontSize: '12px',
           fontFamily: 'monospace',
           letterSpacing: '-0.5px',
-        }}>Version 1.10</p>
+        }}>Version 1.11</p>
 
         <p style={{
           position: 'absolute',

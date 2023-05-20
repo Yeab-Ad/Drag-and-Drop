@@ -1,11 +1,13 @@
-Apologies for the confusion. Here's the corrected version with the items properly formatted in markdown:
-
-markdown
-Copy code
-
 # Node Effect✌
 
 Node Effect✌ is an awesome app for organizing and managing draggable nodes!
+
+<center>
+  <div>
+    <p>Dark Mode</p>
+    <img src="src/assets/img1.png" alt="Image" width="300" height="200" />
+  </div>
+</center>
 
 ## Features
 
